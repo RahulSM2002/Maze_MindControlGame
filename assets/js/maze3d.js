@@ -56,11 +56,13 @@
     var timer = setTimeout(function () {
       clearTimeout(timer);
       document.body.removeChild(messageContainer);
-    }, 3500);
 
-    // Start playing background music at low volume
-    bgm.volume = 0.2;
-    bgm.play();
+      // Start playing background music at low volume
+      bgm.volume = 0.2;
+      bgm.play().catch((error) => {
+        console.error("Error playing BGM: ", error);
+      });
+    }, 3500);
   }
 
   function initializeScene() {
@@ -312,7 +314,9 @@
 
       // Restart the background music
       bgm.currentTime = 0;
-      bgm.play();
+      bgm.play().catch((error) => {
+        console.error("Error playing BGM: ", error);
+      });
     }
   }
 
