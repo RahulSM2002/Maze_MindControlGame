@@ -7,6 +7,9 @@
   var map = new Array();
   var running = true;
 
+  // Get the audio element
+  var bgm = document.getElementById("bgm");
+
   function initializeEngine() {
     renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -54,6 +57,10 @@
       clearTimeout(timer);
       document.body.removeChild(messageContainer);
     }, 3500);
+
+    // Start playing background music at low volume
+    bgm.volume = 0.2;
+    bgm.play();
   }
 
   function initializeScene() {
@@ -294,7 +301,7 @@
       document.location.href =
         "https://plus.google.com/u/0/114532615363095107351/posts";
     } else {
-      // Remove all childrens.
+      // Remove all children
       for (var i = 0, l = scene.children.length; i < l; i++) {
         scene.remove(scene.children[i]);
       }
@@ -302,6 +309,10 @@
       scene = new THREE.Scene();
       loadLevel(levelHelper.getNext());
       running = true;
+
+      // Restart the background music
+      bgm.currentTime = 0;
+      bgm.play();
     }
   }
 
