@@ -93,7 +93,7 @@
     var topMesh = new THREE.Mesh(
       floorGeometry,
       new THREE.MeshPhongMaterial({
-        map: loader.load("assets/images/textures/roof_diffuse.gif"),
+        map: loader.load("assets/images/textures/roof_diffuse.jpg"),
       })
     );
 
